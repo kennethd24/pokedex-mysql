@@ -21,6 +21,16 @@ app.get('/api/pokemon', (req, res) => {
   })
 })
 
+
+app.get('/api/types', (req, res) => {
+
+  let  queryStr = `Select * from types`
+
+  db.query(queryStr, (err, results) => {
+    err ? res.status(404).send(err) : res.status(200).send(results)
+  })
+})
+
 app.listen(port, err => {
   err ? console.log('Not listening') : console.log('We in this bitch')
 })
